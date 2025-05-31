@@ -31,7 +31,7 @@ export default function HomePage() {
   <link rel="icon" href="/favicon.ico" />
 </Head>    <Box sx={{ display: 'flex', minHeight: '100vh' , backgroundColor:'black'}}>
 <model-viewer
-  src="/models/mossydragon.glb"
+  src="/models/mossyDragon.glb"
   alt="A 3D dragon"
   auto-rotate
   camera-controls
