@@ -30,13 +30,7 @@ export default function HomePage() {
   <meta name="description" content="Paint and collect magical dragons from Mystvale: Dragon Hollow." />
   <link rel="icon" href="/favicon.ico" />
 </Head>    <Box sx={{ display: 'flex', minHeight: '100vh' , backgroundColor:'black'}}>
-<model-viewer
-  src="/models/mossyDragon.glb"
-  alt="A 3D dragon"
-  auto-rotate
-  camera-controls
-  style={{ width: '100%', height: '500px' }}
-/>
+
       <Drawer
         variant="permanent"
         open={open}
