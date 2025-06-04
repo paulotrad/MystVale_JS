@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Box, Typography, Container, Button } from '@mui/material';
 import Head from 'next/head';
 import dragons from '../data/dragons';
-
+import { shopData } from '../data/shop';
 export default function HomePage() {
   return (
     <>

@@ -8,8 +8,8 @@ export default function ShopIndex() {
     <Box sx={{ p: 4 }}>
       <Typography variant="h3" gutterBottom>Shop Kits</Typography>
       <Grid container spacing={4}>
-        {shopData.map((item) => (
-          <Grid item xs={12} sm={6} md={4} key={item.slug}>
+        {shopData.map((item,index) => (
+          <Grid item xs={12} sm={6} md={4} key={index}>
             <Link href={`/shop/${item.slug}`} passHref>
               <Box
                 component="a"
