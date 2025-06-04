@@ -1,30 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
-import { Drawer, List, ListItem, ListItemText, IconButton, Box, Typography } from '@mui/material';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import { Image, Title } from '@mui/icons-material';
-import { grey } from '@mui/material/colors';
-import Button from '@mui/material';
+import { Box, Typography, Container, Button } from '@mui/material';
 import Head from 'next/head';
-import CardFlip from '../components/CardFlip';
+import dragons from '../data/dragons';
 
 export default function HomePage() {
-  const [open, setOpen] = React.useState(false);
-
-  const toggleDrawer = () => {
-    setOpen(!open);
-  };
-
-  const menuItems = [
-    { text: 'Shop', href: '/shop' },
-    { text: 'How It Works', href: '/how-it-works' },
-    { text: 'Meet the Dragons', href: '/dragons' },
-    { text: 'Host or Join a Party', href: '/party' },
-    { text: 'Gallery & Community', href: '/gallery' },
-    { text: 'Blog or News', href: '/blog' },
-  ];
-
   return (
     <>
       <Head>
@@ -32,85 +12,22 @@ export default function HomePage() {
         <meta name="description" content="Paint and collect magical dragons from Mystvale: Dragon Hollow." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* body starts here */}
 
-
-
-
-      <Box sx={{ display: 'flex', minHeight: '100vh', backgroundColor: 'black' }}>
-{/* menu starts here */}
-        <Drawer
-          variant="permanent"
-          open={open}
-          PaperProps={{
-            sx: {
-              backgroundColor: 'lightgrey',
-              width: open ? 240 : 60,
-              transition: 'width 0.3s',
-              overflowX: 'hidden',
-            },
-          }}
-        >
-          <Box sx={{ display: 'flex', justifyContent: open ? 'flex-end' : 'center', p: 1 }}>
-            <IconButton onClick={toggleDrawer}>
-              {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-            </IconButton>
-          </Box>
-          <List>
-            {menuItems.map((item, index) => (
-
-              <ListItem
-                button
-                key={index}
-                component={Link}
-                href={item.href}
-                sx={{
-                  '&:hover': {
-                    backgroundColor: '#d3e0ea',
-                    borderRadius: 1,
-                  },
-                  mx: 1,
-                  my: 0.5,
-                }}
-              >
-                {open && (
-                  <ListItemText
-                    primary={item.text}
-                    primaryTypographyProps={{
-                      fontFamily: 'Comic Sans MS, cursive',
-                      fontWeight: 500,
-                    }}
-                  />
-                )}
-              </ListItem>
-            ))}
-          </List>
-        </Drawer>
-            {/* body starts here */}
-
-
-
-        <Box
-          sx={{
-            flexGrow: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            transition: 'margin-left 0.3s',
-            //marginLeft: open ? '240px' : '60px'
-          }}
-        >        <Box
-          sx={{
-
-            textAlign: 'center',
-            background: 'linear-gradient(to bottom, #fefcfb, #e7e6e6)',
-            borderRadius: 2,
-            boxShadow: 3,
-            mx: 'auto',
-            width: '100%',
-            borderWidth: 3,
-          }}
-        >
-            <Typography variant="h4" >
+      {/* Main Layout */}
+      <Box sx={{ backgroundColor: 'black', minHeight: '100vh', py: 6 }}>
+        <Container maxWidth="md">
+          {/* Hero Section */}
+          <Box
+            sx={{
+              background: 'linear-gradient(to bottom, #fefcfb, #e7e6e6)',
+              borderRadius: 3,
+              boxShadow: 6,
+              p: 4,
+              textAlign: 'center',
+              mb: 6,
+            }}
+          >
+            <Typography variant="h3" gutterBottom>
               Welcome to Mystvale: Dragon Hollow
             </Typography>
             <Typography variant="subtitle1" sx={{ fontStyle: 'italic' }}>
@@ -119,32 +36,106 @@ export default function HomePage() {
             <Typography variant="subtitle1" sx={{ fontStyle: 'italic' }}>
               Dragon Hollow is home to the most magical creatures ever painted.
             </Typography>
-            <Typography variant="subtitle1" sx={{ fontStyle: 'italic' }}>
+            <Typography variant="subtitle1" sx={{ fontStyle: 'italic', mb: 1 }}>
               Here, young dragons hatch with a spark of story in their hearts and color on their scales.
             </Typography>
+            <Typography variant="body2">~Paint their tale. Discover their world.~</Typography>
 
-            <Typography variant="body2">
-              ~Paint their tale. Discover their world.~
-            </Typography>
+            <Link href="/dragons" passHref>
+              <Button variant="contained" sx={{ mt: 4 }}>
+                Meet the Dragons
+              </Button>
+            </Link>
           </Box>
+
+          {/* Image */}
           <Box
             component="img"
             src="/images/front.png"
             alt="Mystvale Dragon Banner"
-            sx={{ width: '50%', maxHeight: 600, alignSelf: 'center', objectFit: 'contain', mb: 2, backgroundColor: 'black', borderRadius: 15 }}
+            sx={{
+              display: 'block',
+              mx: 'auto',
+              width: '100%',
+              maxWidth: 600,
+              borderRadius: 6,
+              boxShadow: 8,
+            }}
           />
 
-        </Box>
+          {/* Shop Section */}
+<Box sx={{ mt: 8 }}>
+  <Typography variant="h4" align="center" gutterBottom>
+    🛍 Featured Shop Kits
+  </Typography>
 
+  <Box
+    sx={{
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+      gap: 4,
+      mt: 4,
+    }}
+  >
+    {shopData.map((item) => (
+      <Link key={item.title} href={item.link} passHref>
+        <Box
+          component="a"
+          sx={{
+            width: 200,
+            textAlign: 'center',
+            textDecoration: 'none',
+            borderRadius: 3,
+            overflow: 'hidden',
+            boxShadow: 4,
+            transition: '0.3s',
+            backgroundColor: '#fff',
+            '&:hover': {
+              transform: 'scale(1.05)',
+              boxShadow: 6,
+            },
+          }}
+        >
+          <Box
+            component="img"
+            src={item.img}
+            alt={item.title}
+            sx={{ width: '100%', height: 160, objectFit: 'cover' }}
+          />
+          <Typography variant="subtitle1" sx={{ p: 2, color: '#222' }}>
+            {item.title}
+          </Typography>
+        </Box>
+      </Link>
+    ))}
+  </Box>
+</Box>
+        </Container>
       </Box>
-      
-      <Box component="footer" sx={{
-        mt: 'auto', p: 2, borderTop: '1px solid #ccc', borderWidth: 3, boxShadow: 15,
-        textAlign: 'center', background: 'linear-gradient(to bottom, #fefcfb, #e7e6e6)',
-        borderRadius: 1
-      }}>
+
+      {/* Footer */}
+      <Box
+        component="footer"
+        sx={{
+          mt: 'auto',
+          p: 2,
+          borderTop: '1px solid #ccc',
+          boxShadow: 15,
+          textAlign: 'center',
+          background: 'linear-gradient(to bottom, #fefcfb, #e7e6e6)',
+        }}
+      >
         <Typography variant="body2">
-          Follow us on <a href="https://instagram.com" target="_blank">Instagram</a> and <a href="https://facebook.com" target="_blank">Facebook</a>.
+          Follow us on{' '}
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+            Instagram
+          </a>{' '}
+          and{' '}
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+            Facebook
+          </a>
+          .
         </Typography>
         <Typography variant="body2">Contact: support@dragonkits.com</Typography>
       </Box>
