@@ -1,11 +1,11 @@
 export const shopData = [
-      {
-        title: 'Single Dragon Kit',
-        img: '/images/shop_single.png',
-        link: '/shop',
-        slug: 'single',
-        description: '1 dragon + paint + brush'
-      },
+    //   {
+    //     title: 'Single Dragon Kit',
+    //     img: '/images/shop_single.png',
+    //     link: '/shop',
+    //     slug: 'single',
+    //     description: '1 dragon + paint + brush'
+    //   },
     //   {
     //     title: 'Party Pack (15 Dragons)',
     //     img: '/images/shop_party.png',
