@@ -4,6 +4,7 @@ import { Box, Typography, Container, Button } from '@mui/material';
 import Head from 'next/head';
 import dragons from '../data/dragons';
 import { shopData } from '../data/shop';
+import Slider from '@mui/material';
 export default function HomePage() {
   return (
     <>
@@ -63,12 +64,24 @@ export default function HomePage() {
             }}
           />
 
+
+
+
+
           {/* Shop Section */}
 <Box sx={{ mt: 8 }}>
   <Typography variant="h4" align="center" gutterBottom>
     🛍 Featured Shop Kits
   </Typography>
-
+<model-viewer
+  src="/models/littletrouble.glb"
+  alt="Little Trouble the Dragon"
+  auto-rotate
+  camera-controls
+  ar
+  shadow-intensity="1"
+  style={{ width: '100%', height: '500px', borderRadius: '15px' }}
+/>
   <Box
     sx={{
       display: 'flex',

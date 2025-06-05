@@ -15,6 +15,7 @@
     "next": "latest",
     "react": "latest",
     "react-card-flip": "^1.2.3",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-slider": "^2.0.6"
   }
 }

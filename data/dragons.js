@@ -6,6 +6,8 @@ const dragons = [
     description:
       "Don’t let the name fool you — Trouble isn’t a menace, he’s a mischievous miracle...",
     image: "/dragons/lil-trouble.png",
+    card: [ '/cards/trouble_front.png','/cards/trouble_back.png'],
+    _3dModels: ['/models/littletrouble.glb']
   },
   {
     slug: "bruntide",
@@ -14,8 +16,8 @@ const dragons = [
     description:
       "Bruntide wasn’t born with flame in his lungs or glory in his name...",
     image: "/dragons/bruntide.png",
-    description: '1 rare dragon + card + keychain',
-    slug:'collector'
+     card: null,
+    _3dModels: []
   },
 ];
 
