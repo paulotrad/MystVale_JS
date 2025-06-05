@@ -2,7 +2,13 @@ import { Box, Typography, Container, Button } from '@mui/material';
 import Link from 'next/link';
 import CardFlip from '../../components/CardFlip';
 import dragons from '../../data/dragons';
-//import '@google/model-viewer';
+
+import dynamic from 'next/dynamic';
+
+const ModelViewer = dynamic(() => import('../../components/ModelViewer'), {
+  ssr: false,
+});
+
 export async function getStaticPaths() {
   const paths = dragons.map((dragon) => ({
     params: { slug: dragon.slug },
@@ -77,20 +83,12 @@ export default function DragonPage({ dragon }) {
        
 
 
-        {/* {dragon._3dModels.map((model,index) =>(
-          <>
-          <Typography>Variant {index} </Typography>
-          <model-viewer
-          src={model}
-          alt="Little Trouble the Dragon"
-          auto-rotate
-          camera-controls
-          ar
-          shadow-intensity="1"
-          style={{ width: '100%', height: '500px', borderRadius: '15px' }}
-        /> 
-        </>
-        ))} */}
+     {dragon._3dModels?.map((model, index) => (
+  <Box key={index} my={4}>
+    <Typography variant="subtitle1">Variant {index + 1}</Typography>
+    <ModelViewer src={model} alt={`${dragon.name} Model ${index + 1}`} />
+  </Box>
+))}
           <Box textAlign="center" mt={4}>
         <Link href="/dragons" passHref>
           <Button variant="outlined">← Back to All Dragons</Button>
