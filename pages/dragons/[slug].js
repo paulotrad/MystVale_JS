@@ -1,13 +1,11 @@
-import { Box, Typography, Container, Button } from '@mui/material';
+import { Box, Typography, Container, Button, ButtonGroup } from '@mui/material';
 import Link from 'next/link';
+import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import CardFlip from '../../components/CardFlip';
 import dragons from '../../data/dragons';
 
-import dynamic from 'next/dynamic';
-
-const ModelViewer = dynamic(() => import('../../components/ModelViewer'), {
-  ssr: false,
-});
+const ModelViewer = dynamic(() => import('../../components/ModelViewer'), { ssr: false });
 
 export async function getStaticPaths() {
   const paths = dragons.map((dragon) => ({
@@ -22,6 +20,8 @@ export async function getStaticProps({ params }) {
 }
 
 export default function DragonPage({ dragon }) {
+  const [view, setView] = useState('original');
+
   return (
     <Container maxWidth="md" sx={{ py: 6 }}>
       <Typography variant="h3" align="center" fontWeight="bold" gutterBottom>
@@ -39,30 +39,63 @@ export default function DragonPage({ dragon }) {
       )}
 
       <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        flexDirection={{ xs: 'column', md: 'row' }}
-        gap={4}
-        my={4}
-      >
-       {dragon.card!=null ? 
-       <CardFlip
-          frontSrc={dragon.card[0]}
-          backSrc={dragon.card[1]}
-        />:"Card Coming Soon"}
-      </Box>
+  display="flex"
+  justifyContent="center"
+  alignItems="center"
+  gap={4}
+  flexDirection={{ xs: 'column', md: 'row' }}
+  my={4}
+>
+  {/* Card */}
+  <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 500 }}>
+    {dragon.card ? (
+      <CardFlip frontSrc={dragon.card[0]} backSrc={dragon.card[1]} />
+    ) : (
+      'Card Coming Soon'
+    )}
+  </Box>
+
+  {/* Model Viewer with toggle */}
+  <Box
+    sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: 400,
+      width: '100%',
+      maxWidth: 400,
+    }}
+  >
+    <ButtonGroup variant="outlined" sx={{ mb: 2 }}>
+      <Button onClick={() => setView('original')}>🧱 Grey Model</Button>
+      <Button onClick={() => setView('painted')}>🎨 Painted Model</Button>
+    </ButtonGroup>
+
+    <ModelViewer
+      src={view === 'original' ? dragon._3dModels[0] : dragon._3dModels[1] || dragon._3dModels[0]}
+      alt={`${dragon.name} model`}
+    />
+  </Box>
+</Box>
+
+        
 
       <Box
         sx={{
           mt: 4,
-          p: 2,
-          backgroundColor: '#fdf3e7',
+          p: 3,
+          backgroundColor: '#fffbe6',
           borderRadius: 2,
-          textAlign: 'center',
+          boxShadow: 2,
+          border: '1px dashed #e0b878',
+          fontFamily: 'Georgia, serif',
         }}
       >
-        <Typography variant="body1" sx={{ fontStyle: 'italic' }}>
+        <Typography variant="h6" gutterBottom fontWeight="bold">
+          {`${dragon.name}'s Tale`}
+        </Typography>
+        <Typography variant="body1" sx={{ fontStyle: 'italic', lineHeight: 1.8 }}>
           {dragon.description}
         </Typography>
       </Box>
@@ -79,23 +112,10 @@ export default function DragonPage({ dragon }) {
         </Typography>
       )}
 
-    
-       
-
-
-     {dragon._3dModels?.map((model, index) => (
-  <Box key={index} my={4}>
-    <Typography variant="subtitle1">Variant {index + 1}</Typography>
-    <ModelViewer src={model} alt={`${dragon.name} Model ${index + 1}`} />
-  </Box>
-))}
-          <Box textAlign="center" mt={4}>
+      <Box textAlign="center" mt={4}>
         <Link href="/dragons" passHref>
           <Button variant="outlined">← Back to All Dragons</Button>
         </Link>
-      </Box>
-
-      <Box>
       </Box>
     </Container>
   );
