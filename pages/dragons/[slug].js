@@ -2,7 +2,7 @@ import { Box, Typography, Container, Button } from '@mui/material';
 import Link from 'next/link';
 import CardFlip from '../../components/CardFlip';
 import dragons from '../../data/dragons';
-import '@google/model-viewer';
+//import '@google/model-viewer';
 export async function getStaticPaths() {
   const paths = dragons.map((dragon) => ({
     params: { slug: dragon.slug },
