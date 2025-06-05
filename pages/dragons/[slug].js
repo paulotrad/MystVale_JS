@@ -77,7 +77,7 @@ export default function DragonPage({ dragon }) {
        
 
 
-        {dragon._3dModels.map((model,index) =>(
+        {/* {dragon._3dModels.map((model,index) =>(
           <>
           <Typography>Variant {index} </Typography>
           <model-viewer
@@ -90,7 +90,7 @@ export default function DragonPage({ dragon }) {
           style={{ width: '100%', height: '500px', borderRadius: '15px' }}
         /> 
         </>
-        ))}
+        ))} */}
           <Box textAlign="center" mt={4}>
         <Link href="/dragons" passHref>
           <Button variant="outlined">← Back to All Dragons</Button>
