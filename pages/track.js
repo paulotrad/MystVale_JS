@@ -17,12 +17,12 @@ export default function Track() {
         const idRes = await fetch(`https://firelight-133cb-default-rtdb.firebaseio.com/qrCodes/${id}.json`);
         const idData = await idRes.json();
 
-        if (!idData) {
+        if (idData==null) {
           setError('This QR code has already been used or is invalid.');
 
            setTimeout(() => {
             window.location.href = '/';
-          }, 2000);
+          }, 7000);
          
         }else{
             // 2. Delete the ID to prevent reuse
