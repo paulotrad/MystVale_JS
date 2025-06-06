@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 export default function Track() {
+  const numberForEventWin = 50;
   const [count, setCount] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState('');
@@ -52,7 +53,7 @@ export default function Track() {
           body: JSON.stringify({ count: newCount }),
         });
 
-        if (newCount === 100) {
+        if (newCount === numberForEventWin) {
           setShowModal(true);
         } else {
           redirectHome();
@@ -147,7 +148,7 @@ export default function Track() {
             textAlign: 'center',
             boxShadow: '0 4px 12px rgba(0,0,0,0.4)'
           }}>
-            <h2 style={{ marginBottom: '1rem', color: '#ffd54f' }}>🎉 You are visitor #100!</h2>
+            <h2 style={{ marginBottom: '1rem', color: '#ffd54f' }}>🎉 You are visitor #{count}!</h2>
             {submitted ? (
               <p>✅ Thank you! Your submission has been received.</p>
             ) : (
