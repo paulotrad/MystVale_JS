@@ -91,6 +91,9 @@ export default function Track() {
     });
 
     setSubmitted(true);
+    
+    redirectHome();
+
   };
 
   return (
