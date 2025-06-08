@@ -19,7 +19,7 @@ const dragons = [
       "Bruntide wasn’t born with flame in his lungs or glory in his name...",
     image: "/dragons/bruntide.png",
      card: null,
-    _3dModels: []
+    _3dModels: ['/models/brunswick.glb']
   },
 ];
 
