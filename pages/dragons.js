@@ -19,10 +19,11 @@ export default function DragonDefaultPage() {
                   <ListItem
                     button
                     component="a"
-                    sx={{
+                    sx={{ backgroundColor:'white',
                       borderRadius: 1,
                       px: 2,
                       py: 1,
+                      width:'15%',
                       '&:hover': {
                         backgroundColor: '#f0f0f0',
                       },

@@ -21,7 +21,7 @@ export default function Track() {
   const redirectHome = () => {
     setTimeout(() => {
       window.location.href = '/';
-    }, 5000);
+    }, 500);
   };
 
   useEffect(() => {
@@ -29,18 +29,18 @@ export default function Track() {
 
     const checkIdAndUpdateCount = async () => {
       try {
-        const idRes = await fetch(`https://firelight-133cb-default-rtdb.firebaseio.com/qrCodes/${id}.json`);
-        const idData = await idRes.json();
+        // const idRes = await fetch(`https://firelight-133cb-default-rtdb.firebaseio.com/qrCodes/${id}.json`);
+        // const idData = await idRes.json();
 
-        if (idData == null) {
-          setError('This QR code has already been used or is invalid.');
-          redirectHome();
-          return;
-        }
+        // if (idData == null) {
+        //   setError('This QR code has already been used or is invalid.');
+        //   redirectHome();
+        //   return;
+        // }
 
-        await fetch(`https://firelight-133cb-default-rtdb.firebaseio.com/qrCodes/${id}.json`, {
-          method: 'DELETE',
-        });
+        // await fetch(`https://firelight-133cb-default-rtdb.firebaseio.com/qrCodes/${id}.json`, {
+        //   method: 'DELETE',
+        // });
 
         const countRes = await fetch('https://firelight-133cb-default-rtdb.firebaseio.com/qrCount.json');
         const countData = await countRes.json();
@@ -53,11 +53,11 @@ export default function Track() {
           body: JSON.stringify({ count: newCount }),
         });
 
-        if (newCount === numberForEventWin) {
-          setShowModal(true);
-        } else {
+        // if (newCount === numberForEventWin) {
+        //   setShowModal(true);
+        // } else {
           redirectHome();
-        }
+        // }
 
       } catch (err) {
         console.error('Error:', err);

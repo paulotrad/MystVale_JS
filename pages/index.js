@@ -5,6 +5,7 @@ import Head from 'next/head';
 import dragons from '../data/dragons';
 import { shopData } from '../data/shop';
 import Slider from '@mui/material';
+import Dragon from './dragons/EachDragonComp';
 export default function HomePage() {
   return (
     <>
@@ -64,8 +65,7 @@ export default function HomePage() {
             }}
           />
 
-
-
+ 
 
 
           {/* Shop Section */}
@@ -125,8 +125,10 @@ export default function HomePage() {
   </Box>
 </Box>
         </Container>
+       
       </Box>
-
+    
+     
       {/* Footer */}
       <Box
         component="footer"
