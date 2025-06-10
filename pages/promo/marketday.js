@@ -5,7 +5,7 @@ export default function Track() {
   const numberForEventWin = 50;
   const [count, setCount] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
