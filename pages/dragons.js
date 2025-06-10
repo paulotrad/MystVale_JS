@@ -24,6 +24,7 @@ export default function DragonDefaultPage() {
                       px: 2,
                       py: 1,
                       width:'15%',
+                      
                       '&:hover': {
                         backgroundColor: '#f0f0f0',
                       },
