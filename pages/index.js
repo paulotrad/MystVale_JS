@@ -5,7 +5,6 @@ import Head from 'next/head';
 import dragons from '../data/dragons';
 import { shopData } from '../data/shop';
 import Slider from '@mui/material';
-import Dragon from './dragons/EachDragonComp';
 export default function HomePage() {
   return (
     <>
