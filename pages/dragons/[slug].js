@@ -4,6 +4,7 @@ import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import CardFlip from '../../components/CardFlip';
 import dragons from '../../data/dragons';
+import BuyButton from '../../components/BuyButton';
 
 const ModelViewer = dynamic(() => import('../../components/ModelViewer'), { ssr: false });
 
@@ -21,6 +22,20 @@ export async function getStaticProps({ params }) {
 
 export default function DragonPage({ dragon }) {
   const [view, setView] = useState('original');
+
+const handleBuy = async () => {
+  console.log("here");
+  const res = await fetch('/api/checkout', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name: dragon.stripe }),
+  });
+
+  if (res.redirected) {
+    window.location.href = res.url;
+  }
+};
+
 
   return (
     <Container maxWidth="md" sx={{ py: 6 }}>
@@ -111,6 +126,10 @@ export default function DragonPage({ dragon }) {
           🏡 Lives at: {dragon.location}
         </Typography>
       )}
+
+      <BuyButton dragonName={"trouble"} priceId={"price_1RZ2IoJJEqNJcLUOJRq0j9UH"}/>
+    
+    <button class="bg-indigo-600 text-white px-4 py-2 rounded">Buy Kit</button>
 
       <Box textAlign="center" mt={4}>
         <Link href="/dragons" passHref>

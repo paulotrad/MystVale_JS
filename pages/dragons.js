@@ -13,7 +13,8 @@ export default function DragonDefaultPage() {
         Meet the Dragons
       </Typography>
 <List disablePadding>
-      {dragons.map((dragon) => (
+        <Typography variant='h5'> Season 1</Typography>
+      {dragons.map((dragon,index) => (
      
                 <Link key={dragon.slug} href={`/dragons/${dragon.slug}`} passHref>
                   <ListItem
@@ -23,14 +24,14 @@ export default function DragonDefaultPage() {
                       borderRadius: 1,
                       px: 2,
                       py: 1,
-                      width:'15%',
+                      width:'15%', marginLeft:2,
                       
                       '&:hover': {
                         backgroundColor: '#f0f0f0',
                       },
                     }}
                   >
-                    <Typography variant="body1">{dragon.name}</Typography>
+                    <Typography variant="body1">{dragon.name} - {String(index).padStart(3,"0")}</Typography>
                   </ListItem>
                 </Link>
               ))}
