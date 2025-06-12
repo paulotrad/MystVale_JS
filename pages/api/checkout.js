@@ -6,26 +6,33 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
 
   try {
-    const { name, priceId } = req.body;
 
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
-      line_items: [
-        {
-          price: priceId,
-          quantity: 1,
-        },
-      ],
-      mode: 'payment',
-      success_url: `https://myst-vale-js.vercel.app/`,
-      cancel_url: `https://myst-vale-js.vercel.app/cancel`,
-       shipping_address_collection: {
-    allowed_countries: ['US', 'CA'], // You can list all allowed countries
+const session = await stripe.checkout.sessions.create({
+  payment_method_types: ['card'],
+  line_items: [
+    {
+      price: "price_1RZ1cCQwLtC8F1G7ZYgZyNVO",
+      quantity: 1,
+     // This shows up in Checkout!
+      // or alternatively add metadata:
+      // adjustable_quantity: {enabled: false}, // if needed
+    },
+  ],
+  mode: 'payment',
+  success_url: `${req.headers.origin}/success?dragon=${name}`,
+  cancel_url: `${req.headers.origin}/cancel`,
+  shipping_address_collection: {
+    allowed_countries: ['US', 'CA'],
   },
-    });
+  metadata: {
+    dragonName: name, // This shows in the dashboard
+  },
+});
+
 
     res.status(200).json({ url: session.url });
   } catch (err) {
+    console.log("eer")
     res.status(500).json({ error: err.message });
   }
 }

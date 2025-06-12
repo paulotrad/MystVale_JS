@@ -5,8 +5,8 @@ import dynamic from 'next/dynamic';
 import CardFlip from '../../components/CardFlip';
 import dragons from '../../data/dragons';
 import BuyButton from '../../components/BuyButton';
-
 const ModelViewer = dynamic(() => import('../../components/ModelViewer'), { ssr: false });
+import styles from '../../styles/BuyButton.module.css';
 
 export async function getStaticPaths() {
   const paths = dragons.map((dragon) => ({
@@ -127,9 +127,10 @@ const handleBuy = async () => {
         </Typography>
       )}
 
-      <BuyButton dragonName={"trouble"} priceId={"price_1RZ1cCQwLtC8F1G7ZYgZyNVO"}/>
-    
-
+      {/* <BuyButton dragonName={"trouble"} priceId={"price_1RZ1cCQwLtC8F1G7ZYgZyNVO"}/> */}
+      <a href={dragon.priceId} class={styles.button} target="_blank" rel="noopener noreferrer">
+  Buy Kit
+</a>
       <Box textAlign="center" mt={4}>
         <Link href="/dragons" passHref>
           <Button variant="outlined">← Back to All Dragons</Button>
