@@ -127,9 +127,8 @@ const handleBuy = async () => {
         </Typography>
       )}
 
-      <BuyButton dragonName={"trouble"} priceId={"price_1RZ2IoJJEqNJcLUOJRq0j9UH"}/>
+      <BuyButton dragonName={"trouble"} priceId={"price_1RZ1cCQwLtC8F1G7ZYgZyNVO"}/>
     
-    <button class="bg-indigo-600 text-white px-4 py-2 rounded">Buy Kit</button>
 
       <Box textAlign="center" mt={4}>
         <Link href="/dragons" passHref>

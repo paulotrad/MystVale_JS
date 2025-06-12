@@ -17,7 +17,7 @@ export default async function handler(req, res) {
         },
       ],
       mode: 'payment',
-      success_url: `${req.headers.origin}/success?dragon=${name}`,
+      success_url: `${req.headers.origin}`,
       cancel_url: `${req.headers.origin}/cancel`,
        shipping_address_collection: {
     allowed_countries: ['US', 'CA'], // You can list all allowed countries
