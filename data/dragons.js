@@ -30,7 +30,7 @@ const dragons = [
     image: "/dragons/bruntide.png",
        priceId:"https://buy.stripe.com/00w7sM7Ii92B7Xj6J75c402",
      card: null,
-    _3dModels: ['/models/pluffie_base.glb','/models/pluffie_variant_color.glb']
+    _3dModels: ['/models/Pluffie_base.glb','/models/Pluffie_variant_color.glb']
   },
 
 ];
