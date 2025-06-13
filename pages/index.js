@@ -72,15 +72,7 @@ export default function HomePage() {
   <Typography variant="h4" align="center" gutterBottom>
     🛍 Featured Shop Kits
   </Typography>
-<model-viewer
-  src="/models/littletrouble.glb"
-  alt="Little Trouble the Dragon"
-  auto-rotate
-  camera-controls
-  ar
-  shadow-intensity="1"
-  style={{ width: '100%', height: '500px', borderRadius: '15px' }}
-/>
+
   <Box
     sx={{
       display: 'flex',
