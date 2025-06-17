@@ -32,6 +32,16 @@ const dragons = [
      card: null,
     _3dModels: ['/models/Pluffie_base.glb','/models/Pluffie_variant_color.glb']
   },
+   {
+    slug: "drowselberry",
+    name: "Drowselberry",
+    class: "Sleepy",
+    description: "Drowselberry is a round-bellied dragon who lives deep in a misty, berry-filled forest. He spends most of his time snoozing inside a cozy glass bottle nestled among the bushes. He adores berries — especially moonberries — and often falls asleep mid-snack, surrounded by the sweet scent of fruit and the soft hum of the woods. Though he’s not the fastest or fiercest, Drowselberry’s calm presence brings peace to all who visit. Woodland dragons nap beside him, leave berry offerings, and cherish his warm, sleepy smiles. In a world of chaos, Drowselberry is a gentle reminder to slow down and savor life’s softest moments.",
+    image: null,
+       priceId:null,
+     card: [ '/cards/drowselberry_front.png','/cards/drowselberry_back.png'],
+    _3dModels: ['/models/droswelberry_base.glb','/models/droswelberry_base.glb']
+  },
 
 ];
 
